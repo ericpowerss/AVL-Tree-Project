@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/power/CLionProjects/AVL-Tree-Project/AVLTree.cpp" "CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj" "gcc" "CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj.d"
-  "C:/Users/power/CLionProjects/AVL-Tree-Project/main.cpp" "CMakeFiles/AVL_Tree.dir/main.cpp.obj" "gcc" "CMakeFiles/AVL_Tree.dir/main.cpp.obj.d"
+  "C:/Users/ericp/CLionProjects/AVL-Tree-Project/AVLTree.cpp" "CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj" "gcc" "CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj.d"
+  "C:/Users/ericp/CLionProjects/AVL-Tree-Project/main.cpp" "CMakeFiles/AVL_Tree.dir/main.cpp.obj" "gcc" "CMakeFiles/AVL_Tree.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.

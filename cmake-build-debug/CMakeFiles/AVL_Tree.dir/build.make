@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2022.3.1\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\power\CLionProjects\AVL-Tree-Project
+CMAKE_SOURCE_DIR = C:\Users\ericp\CLionProjects\AVL-Tree-Project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/AVL_Tree.dir/depend.make
@@ -69,32 +69,32 @@ include CMakeFiles/AVL_Tree.dir/progress.make
 include CMakeFiles/AVL_Tree.dir/flags.make
 
 CMakeFiles/AVL_Tree.dir/main.cpp.obj: CMakeFiles/AVL_Tree.dir/flags.make
-CMakeFiles/AVL_Tree.dir/main.cpp.obj: C:/Users/power/CLionProjects/AVL-Tree-Project/main.cpp
+CMakeFiles/AVL_Tree.dir/main.cpp.obj: C:/Users/ericp/CLionProjects/AVL-Tree-Project/main.cpp
 CMakeFiles/AVL_Tree.dir/main.cpp.obj: CMakeFiles/AVL_Tree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/AVL_Tree.dir/main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/AVL_Tree.dir/main.cpp.obj -MF CMakeFiles\AVL_Tree.dir\main.cpp.obj.d -o CMakeFiles\AVL_Tree.dir\main.cpp.obj -c C:\Users\power\CLionProjects\AVL-Tree-Project\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/AVL_Tree.dir/main.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/AVL_Tree.dir/main.cpp.obj -MF CMakeFiles\AVL_Tree.dir\main.cpp.obj.d -o CMakeFiles\AVL_Tree.dir\main.cpp.obj -c C:\Users\ericp\CLionProjects\AVL-Tree-Project\main.cpp
 
 CMakeFiles/AVL_Tree.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AVL_Tree.dir/main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\power\CLionProjects\AVL-Tree-Project\main.cpp > CMakeFiles\AVL_Tree.dir\main.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ericp\CLionProjects\AVL-Tree-Project\main.cpp > CMakeFiles\AVL_Tree.dir\main.cpp.i
 
 CMakeFiles/AVL_Tree.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AVL_Tree.dir/main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\power\CLionProjects\AVL-Tree-Project\main.cpp -o CMakeFiles\AVL_Tree.dir\main.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ericp\CLionProjects\AVL-Tree-Project\main.cpp -o CMakeFiles\AVL_Tree.dir\main.cpp.s
 
 CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj: CMakeFiles/AVL_Tree.dir/flags.make
-CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj: C:/Users/power/CLionProjects/AVL-Tree-Project/AVLTree.cpp
+CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj: C:/Users/ericp/CLionProjects/AVL-Tree-Project/AVLTree.cpp
 CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj: CMakeFiles/AVL_Tree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj -MF CMakeFiles\AVL_Tree.dir\AVLTree.cpp.obj.d -o CMakeFiles\AVL_Tree.dir\AVLTree.cpp.obj -c C:\Users\power\CLionProjects\AVL-Tree-Project\AVLTree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/AVL_Tree.dir/AVLTree.cpp.obj -MF CMakeFiles\AVL_Tree.dir\AVLTree.cpp.obj.d -o CMakeFiles\AVL_Tree.dir\AVLTree.cpp.obj -c C:\Users\ericp\CLionProjects\AVL-Tree-Project\AVLTree.cpp
 
 CMakeFiles/AVL_Tree.dir/AVLTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AVL_Tree.dir/AVLTree.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\power\CLionProjects\AVL-Tree-Project\AVLTree.cpp > CMakeFiles\AVL_Tree.dir\AVLTree.cpp.i
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ericp\CLionProjects\AVL-Tree-Project\AVLTree.cpp > CMakeFiles\AVL_Tree.dir\AVLTree.cpp.i
 
 CMakeFiles/AVL_Tree.dir/AVLTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AVL_Tree.dir/AVLTree.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\power\CLionProjects\AVL-Tree-Project\AVLTree.cpp -o CMakeFiles\AVL_Tree.dir\AVLTree.cpp.s
+	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ericp\CLionProjects\AVL-Tree-Project\AVLTree.cpp -o CMakeFiles\AVL_Tree.dir\AVLTree.cpp.s
 
 # Object files for target AVL_Tree
 AVL_Tree_OBJECTS = \
@@ -110,7 +110,7 @@ AVL_Tree.exe: CMakeFiles/AVL_Tree.dir/build.make
 AVL_Tree.exe: CMakeFiles/AVL_Tree.dir/linklibs.rsp
 AVL_Tree.exe: CMakeFiles/AVL_Tree.dir/objects1.rsp
 AVL_Tree.exe: CMakeFiles/AVL_Tree.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable AVL_Tree.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable AVL_Tree.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\AVL_Tree.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,6 +122,6 @@ CMakeFiles/AVL_Tree.dir/clean:
 .PHONY : CMakeFiles/AVL_Tree.dir/clean
 
 CMakeFiles/AVL_Tree.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\power\CLionProjects\AVL-Tree-Project C:\Users\power\CLionProjects\AVL-Tree-Project C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug C:\Users\power\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles\AVL_Tree.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ericp\CLionProjects\AVL-Tree-Project C:\Users\ericp\CLionProjects\AVL-Tree-Project C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug C:\Users\ericp\CLionProjects\AVL-Tree-Project\cmake-build-debug\CMakeFiles\AVL_Tree.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/AVL_Tree.dir/depend
 

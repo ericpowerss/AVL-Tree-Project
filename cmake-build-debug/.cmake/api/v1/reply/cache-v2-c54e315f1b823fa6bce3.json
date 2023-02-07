@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/power/CLionProjects/AVL-Tree-Project/cmake-build-debug"
+			"value" : "C:/Users/ericp/CLionProjects/AVL-Tree-Project/cmake-build-debug"
 		},
 		{
 			"name" : "AVL_Tree_IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/power/CLionProjects/AVL-Tree-Project"
+			"value" : "C:/Users/ericp/CLionProjects/AVL-Tree-Project"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/power/CLionProjects/AVL-Tree-Project/cmake-build-debug"
+			"value" : "c:/Users/ericp/CLionProjects/AVL-Tree-Project/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/power/CLionProjects/AVL-Tree-Project/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/ericp/CLionProjects/AVL-Tree-Project/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -751,7 +751,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/power/CLionProjects/AVL-Tree-Project"
+			"value" : "C:/Users/ericp/CLionProjects/AVL-Tree-Project"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",

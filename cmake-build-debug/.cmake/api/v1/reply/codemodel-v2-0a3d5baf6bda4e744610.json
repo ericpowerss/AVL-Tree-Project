@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/power/CLionProjects/AVL_Tree/cmake-build-debug",
-		"source" : "C:/Users/power/CLionProjects/AVL_Tree"
+		"build" : "C:/Users/power/CLionProjects/AVL-Tree-Project/cmake-build-debug",
+		"source" : "C:/Users/power/CLionProjects/AVL-Tree-Project"
 	},
 	"version" : 
 	{

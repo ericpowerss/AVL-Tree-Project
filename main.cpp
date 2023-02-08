@@ -5,7 +5,11 @@ using namespace std;
 
 
 bool commandCheck(string command){
-    if (command == "insert" || command == "remove" || command == "search" || command ==   )
+    if (command == "insert" || command == "remove" || command == "search" || command == "printInorder" || command == "printPreorder" || command == "printPostorder" || command == "removeInorder"){
+        return false;
+    }
+
+    return true;
 }
 
 // Function for verifying if ID is 8 digits
@@ -26,8 +30,11 @@ bool digitCounter(long ID) {
     }
 
     return false;
+}
 
-
+bool letterChecker(string name){
+    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\"") ==
+           string::npos;
 }
 
 
@@ -42,19 +49,27 @@ int main() {
         getline(cin, line);
         stringstream sso(line);
         getline(sso, command, ' ');
-        getline(sso, name, ' ');
-        getline(sso, stringID, ' ');
-        ID = stol(stringID);
-
-        if (digitCounter(ID)){
+        if (commandCheck(command)){
             cout << "unsuccessful" << endl;
+            continue;
         }
 
-        else {
+        if (command == "insert"){
+            getline(sso, name, ' ');
+            getline(sso, stringID, ' ');
+            ID = stol(stringID);
+
+            if (digitCounter(ID) || !letterChecker(name)){
+                cout << "unsuccessful" << endl;
+                continue;
+            }
+
             cout << command << endl;
             cout << name << endl;
             cout << ID << endl;
+
         }
+
 
 
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <algorithm>
 using namespace std;
 
 
@@ -33,7 +34,7 @@ bool digitCounter(long ID) {
 }
 
 bool letterChecker(string name){
-    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\"") ==
+    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") ==
            string::npos;
 }
 
@@ -42,7 +43,7 @@ bool letterChecker(string name){
 int main() {
     int num_lines;
     long ID;
-    string line, command, name, stringID;
+    string line, command, name, stringID, space1, space2;
     getline(cin, line);
     num_lines = stoi(line);
     while(num_lines--){
@@ -55,7 +56,10 @@ int main() {
         }
 
         if (command == "insert"){
-            getline(sso, name, ' ');
+            getline(sso, space1, '\"');
+            getline(sso, name, '\"');
+            name.erase(remove(name.begin(), name.end(), '\"'), name.end());
+            getline(sso, space2, ' ');
             getline(sso, stringID, ' ');
             ID = stol(stringID);
 

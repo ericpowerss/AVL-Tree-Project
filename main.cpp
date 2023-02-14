@@ -2,49 +2,18 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 #include "AVLTree.h"
+#include "DataValidation.h"
+
 using namespace std;
-
-
-bool commandCheck(const string& command){
-    if (command == "insert" || command == "remove" || command == "search" || command == "printInorder" || command == "printPreorder" || command == "printPostorder" || command == "removeInorder"){
-        return false;
-    }
-
-    return true;
-}
-
-// Function for verifying if ID is 8 digits
-bool digitCounter(long ID) {
-    int count = 0;
-    while (ID != 0) {
-        ID = ID / 10;
-        count++;
-
-        // This will save some time if a larger number is passed in for ID
-        if (count == 9){
-            break;
-        }
-    }
-
-    if (count != 8){
-        return true;
-    }
-
-    return false;
-}
-
-bool letterChecker(const string& name){
-    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") ==
-           string::npos;
-}
 
 
 
 int main() {
     int num_lines;
     long ID;
-    string line, command, name, stringID, space1, space2;
+    string line, command, name, stringID, space1, space2, questionString, appendString;
     AVL myAVL;
 
 
@@ -69,20 +38,54 @@ int main() {
             getline(sso, stringID, ' ');
             ID = stol(stringID);
 
-            if (digitCounter(ID) || !letterChecker(name) || myAVL.uniqueElement(ID)){
+            if (digitCounter(stringID) || !letterChecker(name)){
                 cout << "unsuccessful" << endl;
                 continue;
             }
 
-            myAVL.insert(ID);
+            myAVL.insert(stringID, name);
 
         }
 
-        if (command == "removeInorder"){
+        if (command == "remove"){
 
         }
 
         if (command == "search"){
+
+
+            getline(sso, questionString, '\n');
+            if (questionString.find('\"') != string::npos)
+            {
+                questionString.erase(remove(questionString.begin(), questionString.end(), '\"'), questionString.end());
+                name = questionString;
+
+                vector<string> matchNodes;
+                matchNodes = myAVL.searchName(matchNodes, name);
+
+                if (matchNodes.empty())
+                {
+                    cout << "unsuccessful" << endl;
+                }
+
+                else
+                {
+                    for (int i = 0; i < matchNodes.size(); i++)
+                    {
+                        if (i != 0)
+                        {
+                            cout << ", ";
+                        }
+                        cout << matchNodes[i];
+                    }
+                    cout << endl;
+                }
+            }
+
+            else
+            {
+                myAVL.searchID(questionString);
+            }
 
         }
 
@@ -99,6 +102,7 @@ int main() {
         }
 
         if (command == "printLevelCount"){
+            cout << myAVL.maxDepth() << endl;
 
         }
 

@@ -1,8 +1,6 @@
 
-
 #ifndef AVL_TREE_AVLTREE_H
 #define AVL_TREE_AVLTREE_H
-
 
 #include<iostream>
 #include<vector>
@@ -10,153 +8,205 @@ using namespace std;
 
 class AVL
 {
-private:
+public:
+
+    // TreeNode struct that stores ID in val and student name in name
     struct TreeNode
     {
         string val;
-        int balanceFactor;
         TreeNode *left;
         TreeNode *right;
         string name;
+        int height;
         TreeNode(string x, string y)
         {
             val = x;
             name = y;
             left = nullptr;
             right = nullptr;
-            balanceFactor = 0;
+            height = 0;
         }
     };
 
     TreeNode* root = nullptr;
-    AVL::TreeNode* helperInsert(TreeNode* helpRoot, string key, string name);
-    void helperInorder(TreeNode* helpRoot);
-    void helperPreorder(TreeNode* helpRoot);
-    void helperPostorder(TreeNode* helpRoot);
+    TreeNode* helperInsert(TreeNode* helpRoot, string key, string name, bool& insertFlag);
+    void helperInorder(TreeNode* helpRoot, bool& flag1);
+    void helperPreorder(TreeNode* helpRoot, bool& flag2);
+    void helperPostorder(TreeNode* helpRoot, bool& flag3);
     int helperMaxDepth(TreeNode* helpRoot);
-    //bool helperUniqueElement(TreeNode* helpRoot, string key);
     void helperSearchID (TreeNode* helpRoot, string key);
     void helperSearchName (TreeNode* helpRoot, string name, vector<string>& matchNodes);
-
-public:
-    void inorder();
-    void preorder();
-    void postorder();
-    void insert(string key, string name);
+    TreeNode* removeNodeHelper(TreeNode* node, string key, bool& flag);
+    void returnVectorHelper(vector<TreeNode*>& nodeVector, TreeNode* node);
+    void inorder(bool& flag1);
+    void preorder(bool& flag2);
+    void postorder(bool& flag3);
+    void insert(string key, string name, bool& insertFlag);
     int maxDepth();
-    //bool uniqueElement(string key);
+    int getHeight(TreeNode* node);
     void searchID(string key);
     vector<string> searchName(vector<string>& matchNodes, string name);
+    int getBalanceFactor(TreeNode* root);
+    void updateHeight(TreeNode *node);
+    TreeNode* rotateRight(TreeNode* node);
+    TreeNode* rotateLeft(TreeNode* node);
+    void removeNode(string key, bool& flag);
+    TreeNode* inOrderSuccessor(TreeNode* node);
+    vector<TreeNode*> returnVector();
 };
 
-
-void AVL::helperInorder(AVL::TreeNode* helpRoot)
+// Traverses Left, Node, Right
+void AVL::helperInorder(AVL::TreeNode* helpRoot, bool& flag1)
 {
-
-    static bool oneNodeCheck = true;
 
     if(helpRoot == nullptr)
     {
+        cout << "";
         return;
     }
 
-    helperInorder(helpRoot->left);
+    helperInorder(helpRoot->left, flag1);
 
-    if (oneNodeCheck)
+    if (flag1)
     {
-        cout << helpRoot->val;
-        oneNodeCheck = false;
+        cout << helpRoot->name;
+        flag1 = false;
     }
 
     else
     {
-        cout << ", " + helpRoot->val;
+        cout << ", " + helpRoot->name;
     }
 
-    helperInorder(helpRoot->right);
+    helperInorder(helpRoot->right, flag1);
 
 }
 
-void AVL::helperPreorder(AVL::TreeNode* helpRoot)
+// Traverses Node, Left, Right
+void AVL::helperPreorder(AVL::TreeNode* helpRoot, bool& flag2)
 {
-
-    static bool oneNodeCheck = true;
 
     if(helpRoot == nullptr)
     {
+        cout << "";
         return;
     }
 
-    if (oneNodeCheck)
+    if (flag2)
     {
-        cout << helpRoot->val;
-        oneNodeCheck = false;
+        cout << helpRoot->name;
+        flag2 = false;
     }
 
     else
     {
-        cout << ", " + helpRoot->val;
+        cout << ", " + helpRoot->name;
     }
 
-    helperPreorder(helpRoot->left);
-    helperPreorder(helpRoot->right);
+    helperPreorder(helpRoot->left, flag2);
+    helperPreorder(helpRoot->right, flag2);
 
 }
 
-void AVL::helperPostorder(AVL::TreeNode* helpRoot)
+// Traverses Left, Right, Node
+void AVL::helperPostorder(AVL::TreeNode* helpRoot, bool& flag3)
 {
-
-    static bool oneNodeCheck = true;
 
     if(helpRoot == nullptr)
     {
+        cout << "";
         return;
     }
 
-    helperPostorder(helpRoot->left);
-    helperPostorder(helpRoot->right);
+    helperPostorder(helpRoot->left, flag3);
+    helperPostorder(helpRoot->right, flag3);
 
-    if (oneNodeCheck)
+    if (flag3)
     {
-        cout << helpRoot->val;
-        oneNodeCheck = false;
+        cout << helpRoot->name;
+        flag3 = false;
     }
 
     else
     {
-        cout << ", " + helpRoot->val;
+        cout << ", " + helpRoot->name;
     }
 
 }
 
-
-AVL::TreeNode* AVL::helperInsert(TreeNode* helpRoot, string key, string name)
+AVL::TreeNode* AVL::helperInsert(TreeNode* helpRoot, string key, string name, bool& insertFlag)
 {
 
+    // If no node with key value exists, create new node
     if (helpRoot == nullptr)
     {
         return new TreeNode(key, name);
     }
 
+    // If key passed in is less than current nodes value, travel left
     if (stol(key) < stol(helpRoot->val))
     {
-        helpRoot->left = helperInsert(helpRoot->left, key, name);
+        helpRoot->left = helperInsert(helpRoot->left, key, name, insertFlag);
     }
 
+    // If key passed in is greater than current nodes value, travel right
     else if (stol(key) > stol(helpRoot->val))
     {
-        helpRoot->right = helperInsert(helpRoot->right, key, name);
+        helpRoot->right = helperInsert(helpRoot->right, key, name, insertFlag);
     }
 
+    // Node with key value passed in already exists
     else
     {
+        insertFlag = true;
         return helpRoot;
+    }
+
+    // Start balancing process
+    updateHeight(helpRoot);
+    int bf = getBalanceFactor(helpRoot);
+
+    if (bf <= -2)
+    {
+        if (getBalanceFactor(helpRoot->right) >= 1)
+        {
+            //right-left
+            helpRoot->right = rotateRight(helpRoot->right);
+            return rotateLeft(helpRoot);
+
+        }
+
+        else
+        {
+            //right-right
+            return rotateLeft(helpRoot);
+        }
+
+    }
+
+    if (bf >= 2)
+    {
+        if (getBalanceFactor(helpRoot->left) <= -1)
+        {
+            //left-right
+            helpRoot->left = rotateLeft(helpRoot->left);
+            return rotateRight(helpRoot);
+
+        }
+
+        else
+        {
+            //left-left
+            return rotateRight(helpRoot);
+        }
+
     }
 
     return helpRoot;
 
 }
 
+// Used for finding max amount of levels within the tree
 int AVL::helperMaxDepth(TreeNode* helpRoot)
 {
 
@@ -167,11 +217,11 @@ int AVL::helperMaxDepth(TreeNode* helpRoot)
 
     else
     {
-        // computes the depth of each subtree
+        // Computes the depth of each subtree
         int leftDepth = helperMaxDepth(helpRoot->left);
         int rightDepth = helperMaxDepth(helpRoot->right);
 
-        // takes the larger depth
+        // Takes the larger depth
         if (leftDepth > rightDepth)
         {
             return (leftDepth + 1);
@@ -185,28 +235,7 @@ int AVL::helperMaxDepth(TreeNode* helpRoot)
 
 }
 
-//bool AVL::helperUniqueElement(TreeNode* helpRoot, string key)
-//{
-//
-//    if (helpRoot == nullptr)
-//    {
-//        return false;
-//    }
-//    if (helpRoot->val == key)
-//    {
-//        return true;
-//    }
-//    if (helpRoot->val < key)
-//    {
-//        return helperUniqueElement(helpRoot->right, key);
-//    }
-//    else
-//    {
-//        return helperUniqueElement(helpRoot->left, key);
-//    }
-//
-//}
-
+// Preorder traversal for searching for a given ID
 void AVL::helperSearchID(TreeNode* helpRoot, string key)
 {
 
@@ -231,6 +260,7 @@ void AVL::helperSearchID(TreeNode* helpRoot, string key)
 
 }
 
+// Helper function that does a Preorder traversal and pushes back node ID into vector if name matches
 void AVL::helperSearchName(TreeNode* helpRoot, string name, vector<string>& matchNodes)
 {
 
@@ -250,49 +280,271 @@ void AVL::helperSearchName(TreeNode* helpRoot, string name, vector<string>& matc
 
 }
 
-
-void AVL::inorder()
+// 3 functions for traversals that pass to their respective helper functions
+void AVL::inorder(bool& flag1)
 {
-    helperInorder(this->root);
+    helperInorder(this->root, flag1);
 }
 
-void AVL::preorder()
+void AVL::preorder(bool& flag2)
 {
-    helperPreorder(this->root);
+    helperPreorder(this->root, flag2);
 }
 
-void AVL::postorder()
+void AVL::postorder(bool& flag3)
 {
-    helperPostorder(this->root);
+    helperPostorder(this->root, flag3);
 }
 
-void AVL::insert(string key, string name)
+// Passes to helper insert
+void AVL::insert(string key, string name, bool& insertFlag)
 {
-    this->root = helperInsert(this->root, key, name);
+    this->root = helperInsert(this->root, key, name, insertFlag);
 }
 
+// 2 functions for searching that passes to their respective helper functions
 void AVL::searchID(string key)
 {
     helperSearchID(this->root, key);
 }
 
-
-vector<string> AVL::searchName(vector<string>& matchNodes, string name) {
+vector<string> AVL::searchName(vector<string>& matchNodes, string name)
+{
     matchNodes.clear();
     helperSearchName(this->root, name, matchNodes);
     return matchNodes;
 }
 
-
+// Passes to helper maxDepth
 int AVL::maxDepth()
 {
     return helperMaxDepth(this->root);
 }
 
-//bool AVL::uniqueElement(string key)
-//{
-//    return helperUniqueElement(this->root, key);
-//}
+// Returns balance factor of node, useful for balancing
+int AVL::getBalanceFactor(AVL::TreeNode* root)
+{
 
+    if (root == nullptr)
+    {
+        return 0;
+    }
+
+    // left subtree - right subtree
+    return getHeight(root->left) - getHeight(root->right);
+
+}
+
+// Updates height of node
+void AVL::updateHeight(TreeNode* node) {
+
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    else
+    {
+        // computes the depth of each subtree
+        int leftDepth = helperMaxDepth(root->left);
+        int rightDepth = helperMaxDepth(root->right);
+
+        // takes the larger depth
+        if (leftDepth > rightDepth)
+        {
+            node->height = (leftDepth + 1);
+        }
+        else
+        {
+            node->height = (rightDepth + 1);
+        }
+
+    }
+
+}
+
+// Returns height of node
+int AVL::getHeight(AVL::TreeNode *node)
+{
+
+    if (node == nullptr)
+    {
+        return 0;
+    }
+
+    else
+    {
+        return node->height;
+    }
+
+}
+
+// Logic for rotating right for balancing
+AVL::TreeNode* AVL::rotateRight(TreeNode* node)
+{
+    TreeNode* child = node->left;
+    TreeNode* temp = child->right;
+    child->right = node;
+    node->left = temp;
+    updateHeight(node);
+    updateHeight(child);
+    return child;
+}
+
+// Logic for rotating left for balancing
+AVL::TreeNode* AVL::rotateLeft(TreeNode* node)
+{
+    TreeNode* child = node->right;
+    TreeNode* temp = child->left;
+    child->left = node;
+    node->right = temp;
+    updateHeight(node);
+    updateHeight(child);
+    return child;
+}
+
+// Passes to remove helper
+void AVL::removeNode(string key, bool& flag)
+{
+    this->root = removeNodeHelper(this->root, key, flag);
+}
+
+// Finds Inorder successor, useful in deletion with two children
+AVL::TreeNode *AVL::inOrderSuccessor(AVL::TreeNode *node)
+{
+
+    TreeNode* curr = node;
+    while (curr->left != nullptr)
+    {
+        curr = curr->left;
+    }
+
+    return curr;
+
+}
+
+AVL::TreeNode* AVL::removeNodeHelper(AVL::TreeNode* node, string key, bool& flag) {
+
+    if (node == nullptr)
+    {
+        return nullptr;
+    }
+
+    // If key passed in is less than current nodes value, travel left
+    else if (stol(key) < stol(node->val))
+    {
+        node->left = removeNodeHelper(node->left, key, flag);
+    }
+    // If key passed in is greater than current nodes value, travel right
+    else if (stol(key) > stol(node->val))
+    {
+        node->right = removeNodeHelper(node->right, key, flag);
+    }
+
+    // Node exists
+    else
+    {
+
+        flag = true;
+
+        // Case for no children
+        if (node->left == nullptr && node->right == nullptr)
+        {
+            delete node;
+            return nullptr;
+        }
+
+        // Case for 1 right child
+        if (node->left == nullptr && node->right != nullptr)
+        {
+            TreeNode* temp = node->right;
+            delete node;
+            return temp;
+        }
+
+        // Case for 1 left child
+        else if (node->right == nullptr && node->left != nullptr)
+        {
+            TreeNode* temp = node->left;
+            delete node;
+            return temp;
+        }
+
+        // Case for 2 children
+        else
+        {
+            TreeNode* temp = inOrderSuccessor(node->right);
+            node->val = temp->val;
+            node->right = removeNodeHelper(node->right, temp->val, flag);
+        }
+
+    }
+
+    // Start balancing process
+    updateHeight(node);
+    int bf = getBalanceFactor(node);
+
+    if (bf <= -2)
+    {
+        if (getBalanceFactor(node->right) >= 1)
+        {
+            //right-left
+            node->right = rotateRight(node->right);
+            return rotateLeft(node);
+
+        }
+
+        else
+        {
+            //right-right
+            return rotateLeft(node);
+        }
+
+    }
+
+    if (bf >= 2)
+    {
+        if (getBalanceFactor(node->left) <= -1)
+        {
+            //left-right
+            node->left = rotateLeft(node->left);
+            return rotateRight(node);
+
+        }
+
+        else
+        {
+            //left-left
+            return rotateRight(node);
+        }
+
+    }
+
+    return node;
+
+}
+
+// passes to returnVector helper
+vector<AVL::TreeNode*> AVL::returnVector()
+{
+    vector<TreeNode*> nodeVector{};
+    returnVectorHelper(nodeVector, this->root);
+    return nodeVector;
+}
+
+void AVL::returnVectorHelper(vector<TreeNode*>& nodeVector, TreeNode* node)
+{
+
+    if (node == nullptr)
+    {
+        return;
+    }
+
+    //Doing an Inorder traversal, pushes back each node in tree into a vector
+    returnVectorHelper(nodeVector, node->left);
+    nodeVector.push_back(node);
+    returnVectorHelper(nodeVector, node->right);
+
+}
 
 #endif //AVL_TREE_AVLTb REE_H

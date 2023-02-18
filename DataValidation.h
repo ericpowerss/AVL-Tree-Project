@@ -2,10 +2,10 @@
 #ifndef AVL_TREE_DATAVALIDATION_H
 #define AVL_TREE_DATAVALIDATION_H
 
-
 #include<iostream>
 using namespace std;
 
+// Verifies if the command is valid
 bool commandCheck(const string& command)
 {
 
@@ -31,35 +31,16 @@ bool digitCounter(const string& stringID)
 
 }
 
+// Checks for letters a-z, A-Z, and spaces
 bool letterChecker(const string& name)
 {
-
-    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") ==
-           string::npos;
-
+    return name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ") == string::npos;
 }
 
+// Used with search to determine if string that follows command is an ID or a name
 bool nameTest(const string& name)
 {
-
-    return name.find_first_not_of('\"') ==
-           string::npos;
-
+    return name.find_first_not_of('\"') == string::npos;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif //AVL_TREE_DATAVALIDATION_H
